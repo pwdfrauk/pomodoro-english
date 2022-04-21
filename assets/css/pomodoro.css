@@ -1,0 +1,782 @@
+/* 
+Project Name: promodoro App with Todo List 
+
+*/
+
+
+/* Global Style  */
+:root {
+    /* --primary-color: #eb6456; */
+    --primary-color: #ff7a6c;
+    --btn-hover-color: #df5748;
+    --timer-wraper-color: #d45345;
+    --timer-text-color: #ffffff;
+}
+* {
+    margin:0;
+    padding:0;
+}
+  
+body {
+    background: #ededed;
+    /*overflow: hidden;*/
+}
+
+a {
+    cursor: pointer;
+    color: white;
+}
+.text-center {
+    text-align: center;
+}
+button-on-hover {
+ transition: .3s;
+}
+.button-on-hover:hover {
+   cursor: pointer;
+   background-color: var(--btn-hover-color);
+}
+#main-container {
+    height: 600px;
+    width: 900px;
+    margin: 6% auto;
+    position: relative;
+    box-shadow: 4px 10px 20px rgba(55, 52, 73, 0.4);
+}
+
+#background {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 50%;
+    height: 100%;
+    background: #ff7a6c;
+    -webkit-clip-path: polygon(52% 0, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(52% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: -1;
+    transition: all 0.8s ease;
+}
+h1 {
+    font-family: "Work Sans", sans-serif;
+    color: #ff7a6c;
+    text-transform: uppercase;
+    font-size: 3.5em;
+    text-shadow: 2px 1px 0px rgba(55, 52, 73, 0.9);
+}
+/* color classes  */
+.rosegold {
+    background: #ce8c91;
+}
+
+.coral {
+    background: #ff7a6c;
+    left: 35px;
+}
+
+.fuschia {
+    background: #a24868;
+    left: 70px;
+}
+
+.black {
+    background: #373449;
+    left: 105px;
+}
+
+
+/* Header info */
+.section-title {
+    margin-top: 5%;
+}
+.header-info {
+    position: absolute;
+    left: 5%;
+    top: -10%;
+}
+.section-subtitle {
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: "Open Sans", sans-serif;
+    color: #373449;
+}
+.highlight {
+    background-color: #ffdc7b;
+}
+
+/*  Right side text inside the pomodoro  */
+.right-info-text-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* height: 100%; */
+    position: absolute;
+    top: 276px;
+    right: -63px;
+}
+.right-info-text {
+    color: white;
+    transform: rotate(270deg) ;
+    font-size: 18px;
+    letter-spacing: 2px;
+    padding:15px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-weight: bold;
+}
+
+/* ++++++++++   Pomodoro  Dashboard Start ++++++++++  */
+#break-time {
+  display: none;
+}
+.selected-task-placeholder {
+    font-size: 17px;
+    margin-bottom: 15px;
+    color: #ff7a6c;
+}
+.pomodoro-dashboard {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.dashboard-area {
+    width: 90%;
+    height: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+/* left side  and right side  */
+.pomodoro-left-side { 
+    width: 30%;
+}
+.left-side-button-area {
+    width: 62px;
+    border-radius: 50px;
+    margin: auto;
+    box-shadow: 0px 0px 5px 1px #ddd;
+}
+.left-side-info {
+    padding: 10px 2px;
+    background: #ffffff;
+    color: #000000;
+}
+.left-info-text {
+ font-size: 13px;
+ font-weight: bold;
+}
+.left-pause-number {
+
+}
+.left-pluse-icon-area {
+    width: 62px;
+    height: 62px;
+    background:#ededed;
+    border-radius: 50% 50% 0% 0%;
+    
+}
+.left-plus-icon {
+    color: #000000;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 62px;
+}
+.left-minus-icon {
+    color: #000000;;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 50px;
+}
+.left-minus-icon-area {
+    width: 62px;
+    height: 62px;
+    border-radius: 0% 0% 50% 50%; 
+    background: #ededed;
+}
+.pomodoro-center-content {
+    width: 40%;
+}
+.pomodoro-right-side {
+    width: 30%
+}
+/* dashboard Timer Content  */
+.pomodoro-center-content-area {
+    background-color: #fbfbfb;
+    border-radius: 20px;
+    width: 220px;
+    height: 220px;
+    padding: 40px;
+    margin: auto;
+}
+.timer-wraper {
+    border-radius: 50%;
+    background-color:#ffa89f;
+    width: 60%;
+    height: 60%;
+    padding: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.timer-area {
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 70%;
+    height: 70%;
+    padding:15%;
+    /*box-shadow: 0px 0px 20px 5px #b93629;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.timer-area:hover {
+  cursor: pointer;
+}
+/* Timer Content */
+.timer-content {
+    
+}
+.timer-info {
+    color: #000000;
+    margin-top: -15px;
+    margin-bottom: 5px;
+    font-size: 19px;
+}
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color:#000000;
+}
+.minute {}
+.seconds {}
+.seperateor {}
+/* ++++++++++   Pomodoro  Dashboard End ++++++++++  */
+
+
+/*++++++++++++++++++++  open do do list css style ++++++++++++++++++++++++*/
+.wrap { position: relative; height: 100%; }
+.help {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;  
+  margin: auto 0;
+  z-index: 1;
+  font-weight: 400; 
+  cursor: pointer;
+  z-index: 301;
+}
+
+
+.help-panel {
+/* width: 809px;  */
+max-width: 809px;
+border: 2px solid #000;
+opacity: 0;
+position: absolute;
+right: 107px;
+top: -200px;
+margin: auto 0;
+z-index: 100;
+background-color: #fff;
+height: 120px;
+overflow: scroll;
+box-sizing: border-box;
+transition: 1s;
+}
+.help-panel h1 {
+  font-size: 18px;
+  line-height: 46px;
+  padding: 0 15px;
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  box-sizing: border-box;
+  opacity: 1;
+  
+}
+.help-panel .Collapse-Help { 
+  position: absolute;
+  right: 10px;
+}
+
+.help-panel-content {
+  height: 405px;
+  padding: 15px;
+}
+
+.help-panel-content h2 { 
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.help-panel-content p { 
+  line-height: 22px;
+  font-size: 18px;
+}
+
+#help-panel {opacity:0;}
+
+fieldset { margin-top: 15px; }
+fieldset textarea { 
+  width: 100%; 
+  height: 300px; 
+  box-sizing: border-box;
+  padding: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  outline: none;
+}
+
+fieldset textarea.error { 
+  border-color: red;
+}
+
+.action-button {
+  display: block;
+  width : 75px;
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 15px;
+  float: right;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+#ThankYou .help-panel-content {
+  margin-top: 150px;
+  text-align: center;
+}
+
+#ThankYou { display: none; }
+
+/* +++++++++++++++++++  To do Task style  +++++++++++++++++++  */
+
+  .block-container {
+    width: 80%;
+    margin: 35px auto;
+    background: #fff;
+    padding: 15px;
+  }
+  
+  .block-header {
+    height: 30px;
+    line-height: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+  }
+  
+  .block-content {
+    padding-top: 15px;
+  }
+  .tasks-deader {
+    display: flex;
+    justify-content: space-between;
+  }
+  .add-task {
+    background-color:var(--btn-hover-color);
+    padding:8px 15px;
+    border-radius: 10px;
+    color:var(--timer-text-color)
+  }
+  .add-task:hover {
+    cursor: pointer;
+    background-color:var(--primary-color);
+  }
+  .task-row {
+    padding-top:15px;
+    padding-bottom:0px;
+    border-bottom: 1px solid #ddd;
+    min-height: 75px;
+    height: 100%;
+  }
+  
+  .task-row:last-child {
+    border-bottom: 1px solid transparent;
+  }
+  
+  .priority {
+    width: 11%;
+    float: left;
+    line-height: 34px;
+  }
+  
+  .priority a {
+    padding: 5px;
+  }
+  
+  .priority.high a {
+    background: #f88;
+  }
+  
+  .priority.normal a {
+    background: #8f8;
+  }
+  
+  .priority.low a {
+    background: #88f;
+  }
+  
+  .task-title {
+    width: 73%;
+    float: left;
+  }
+  
+  .task-title h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+  }
+  
+  .task-title h5 {
+    color: #999;
+    font-size: 15px;
+  }
+  
+  .task-status {
+    width: 15%;
+    float: left;
+    height: 34px;
+  }
+  
+  .status-bar {
+    float:left;
+    height: 20px;
+    width: 90%;
+    padding: 7px 0;
+  }
+  
+  .status-track {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 20px;
+    background: #ebebeb;
+    border-radius: 3px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+  }
+  
+  .status-fill {
+    position: relative;
+    background: #8CE2FF;
+    border-radius: 3px;
+    height: 20px;
+    width: 50%; /*default*/
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+  }
+  
+  .status-text {
+    position: absolute;
+    left: 50%;
+    margin-left: -20px; /* sketchy center-it: 50% -->  then 1/2 width <--  */
+    color: #656565;
+    text-align: center;
+    font-family: "Lato","Verdana",sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: bold;
+    z-index: 100;
+    display: inline-block;
+    width: 40px;
+  }
+  
+  .task-time {
+    width: 100%;
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    text-align: right;
+  }
+  
+  .task-time {
+    font-size: 13px;
+    color: #555;
+    font-weight: bold;
+  }
+  .task-time span {
+    margin:0px 5px;
+  }
+  .task-time span::after {
+    content: ',';
+  }
+ 
+  
+  .task-time small {
+    color: #999;
+    font-weight: normal;
+  }
+  
+  /* Tooltips */
+  
+  .tooltip{
+    display: inline;
+    position: relative;
+  }
+  
+  .tooltip:hover:after{
+    background: #333;
+    background: rgba(0,0,0,.8);
+    border-radius: 5px;
+    bottom: 26px;
+    color: #fff;
+    content: attr(tooltip);
+    left: 20%;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 98;
+    width: 220px;
+  }
+  
+  .tooltip:hover:before{
+    border: solid;
+    border-color: #333 transparent;
+    border-width: 6px 6px 0 6px;
+    bottom: 20px;
+    content: "";
+    left: 50%;
+    position: absolute;
+    z-index: 99;
+  }
+/* +++++++++++  Add task +++++++ */
+#add-task-area {
+  display: none;
+}
+  .add-task-form {
+    position: absolute;
+    top: 89px;
+    z-index: 100;
+    padding: 5%;
+    width: 90%;
+    background: #fbf1f1;
+    /* height: 100%; */
+}
+.add-task-form form {
+  text-align: center;
+}
+.add-task-input {
+  padding:5px 10px;
+  width: 80%;
+  margin: 10px;
+}
+.add-task-textarea {
+  padding: 5px 10px;
+  margin: 10px;
+}
+.add-task-submit {
+  padding: 5px 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.select-timer-area {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  margin-top: 15px;
+}
+.select-timer-area span {
+  display: block;
+}
+.select-task-btn {
+    color: #03a9f4;
+    display: inline-block;
+    padding:4px;
+    border-radius: 2px;
+}
+.select-task-btn:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: var(--primary-color);
+}
+.select-task-btn.active {
+  background-color: var(--primary-color);
+}
+.delete-task-btn{
+  color: #ff3300;
+  display: inline-block;
+  padding:4px;
+  border-radius: 2px;
+}
+.delete-task-btn:hover {
+  color: #fff;
+  cursor: pointer;
+  background-color: #ff3300;
+}
+
+  /* responsive style Start  */
+  @media (max-width:768px) {
+    body {
+      overflow: scroll;
+    }
+    #main-container  {
+      width: 85%;
+      margin: auto;
+      margin-top: 80px;
+    }
+    .pomodoro-left-side {
+      width: 20%;
+  } 
+  .pomodoro-center-content {
+    width: 50%;
+}
+.help-panel {
+  max-width: 585px;
+  position: absolute;
+  right: 96px;
+  top: -203px;
+  margin: auto 0;
+  z-index: 2;
+  background-color: #fff;
+  height: 120px;
+  overflow: scroll;
+  box-sizing: border-box;
+  
+}
+  }
+
+@media (max-width:576px) {
+  .selected-task-placeholder {
+    font-size: 15px;
+  }
+  .help-panel {
+    max-width: 245px;
+  }
+  .section-title {
+    font-size: 25px;
+  }
+  .section-subtitle {
+    font-size: 16px;
+  }
+  .header-info {
+    position: absolute;
+    left: 5%;
+    top: -5%;
+}
+  .dashboard-area {
+    width: 90%;
+    height: 75%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .pomodoro-center-content-area {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 150px;
+    height: 150px;
+    padding: 15px;
+    margin: auto;
+}
+.select-timer-area {
+  text-align: left;
+}
+.task-row {
+  height: inherit;
+  border-bottom: 1px solid #ff7a6c;
+}
+.timer-wraper {
+  border-radius: 50%;
+  background-color: #ffa89f;
+  width: 70%;
+  height: 70%;
+  padding: 15%;
+}
+.left-side-button-area {
+  width: auto;
+  margin: auto;
+  display: flex;
+}
+.pomodoro-left-side {
+  width: 60%;
+  margin: auto;
+  margin:25px 0px;
+}
+.left-pluse-icon-area {
+  width: 30%;
+  border-radius: 50% 0% 0% 50%;
+}
+.left-minus-icon-area {
+  width: 30%;
+
+  border-radius: 0% 50% 50% 0%;
+}
+.left-minus-icon {
+  line-height: 62px;
+}
+.wrap {
+  position: relative;
+  height: auto;
+}
+.pomodoro-center-content {
+  width: 80%;
+}
+.pomodoro-dashboard {
+  height: 500px;
+  z-index: 200;
+}
+.block-container {
+  width: 90%;
+  margin: 10px auto;
+  background: #fff;
+  /* padding: 8px; */
+}
+.priority {
+  width: 50%;
+  float: none;
+}
+.task-title {
+  width: 90%;
+  float: none;
+}
+.task-status {
+  width: 50%;
+  float: left;
+  height: 40px;
+}
+.task-time {
+  width: 97%;
+  float: left;
+  height: auto;
+  line-height: 34px;
+  text-align: left;
+ }
+ .task-time span  {
+  width: 100%;
+  display: block;
+  line-height: 1.6;
+ }
+ .left-side-info {
+  width: 40%;
+ }
+ .tasks-deader {
+  display: block;
+ }
+ .add-task {
+  margin-top: 5px;
+    padding: 7px 11px;
+ }
+}
+
+
+
+
+
+
+

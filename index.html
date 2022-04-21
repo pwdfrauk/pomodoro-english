@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro With To do list</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/pomodoro.css">
+</head>
+
+<body>
+    <div id="main-container">
+        <!-- header info -->
+        <div class="header-info">
+            <h1 class="section-title" class="margin-top">todobook</h1>
+            <h2 class="section-subtitle">Manage your projects
+                <span class="highlight">easily</span>.</h2>
+        </div>
+        <!-- pomodoro right side text  -->
+        <div class="wrap right-info-text-area">
+            <P id='openToDoList' class="help right-info-text">Select Task Here </P>
+            <div class="help-panel">
+                <div id="help-panel">
+                       <!-- Handle Bar js Output --> 
+                       <div id="content-placeholder">
+                            <div class="block-container">
+                                <div class="block-header">
+                                    <div class="tasks-deader">
+                                        <h3>Tasks</h3>
+                                        <h3 class="add-task">Add Task</h3>
+                                    </div>
+                                </div>
+                                <div class="block-content"></div>
+                            </div>
+                       </div>
+                       <div id="add-task-area" class="add-task-form">
+                           <form id="add-task-form">
+                               <input id='add-task-title' class="add-task-input" name='title' type="text" placeholder="Add task Title">
+                               <input id="add-task-desc" class="add-task-input" name='description' type="text" placeholder="Add Task description"><br>
+                               <label>Set time for complete this task ( Use Minute )</label>
+                               <input id='set-time-for-task' class="add-task-input" name="settime" placeholder="Minute" type="number" >
+                               <select id="tasks-priority" class="add-task-textarea" name="priority">
+                                   <option value="high">High</option>
+                                   <option value="normal">Normal</option>
+                                   <option value="low">Low</option>
+                               </select>
+                               <input type="hidden" id='task-id'>
+                               <input class="add-task-submit" type="submit" value="Add Task">
+                               <input id='add-task-close-btn' class="add-task-submit" type="button" value="Cancel">
+                           </form>
+                       </div>
+                </div>
+              </div>
+        </div>
+        <div id="background"></div>
+        <!-- Pomodoro  Dashboard Start -->
+        <div class="pomodoro-dashboard">
+            <div class="dashboard-area">
+                <input type="hidden" id="seletedId" />
+               <!-- Promodoro Left Side  -->
+                <div class="pomodoro-left-side text-center">
+                    <div class="left-side-button-area">
+                        <div class="left-pluse-icon-area button-on-hover">
+                            <p class="left-plus-icon" id="work-increment-btn">+</p> 
+                        </div>
+                        <div class="left-side-info">
+                            <p class="left-pause-number" id="set-work-min"></p>
+                            <p class="left-info-text">TASK
+                            </p>
+                        </div>
+                        <div class="left-minus-icon-area button-on-hover">
+                            <p class="left-minus-icon" id="work-decrement-btn">-</p> 
+                        </div>
+                    </div>
+                </div>
+                <!-- Promodoro  Center Content  -->
+                <div class="pomodoro-center-content text-center">
+                    <h3 class="selected-task-placeholder">PLEASE SELECT A TASK</h3>
+                    <div class="pomodoro-center-content-area">
+                        <div class="timer-wraper">
+                            <div class="timer-area" id="start">
+                                <div class="timer-content" >
+                                    <p class="timer-info" id="timer-info"> TASKS </p>
+                                    <div class="timer" id="work-time">
+                                        <div id="w_minutes" class="minute"></div>
+                                        <div class="seperateor">:</div>
+                                        <div id="w_seconds" class="seconds">00</div>
+                                    </div>
+                                    <div class="timer" id="break-time">
+                                        <div id="b_minutes" class="minute">5</div>
+                                        <div class="seperateor">:</div>
+                                        <div id="b_seconds" class="seconds">00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Promodoro Right side  -->
+                <div class="pomodoro-left-side text-center">
+                    <div class="left-side-button-area">
+                        <div class="left-pluse-icon-area button-on-hover">
+                            <p class="left-plus-icon" id="break-increment-btn">+</p> 
+                        </div>
+                        <div class="left-side-info">
+                            <p class="left-pause-number" ><span id="set-break-min"></span></p>
+                            <p class="left-info-text">PAUSE</p>
+                        </div>
+                        <div class="left-minus-icon-area button-on-hover">
+                            <p class="left-minus-icon"id="break-decrement-btn">-</p> 
+                        </div>
+                    </div
+            </div>
+        </div>
+        <!-- Pomodoro  Dashboard End -->
+    </div>
+
+
+     <!-- js file  -->
+      <!-- script file  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script> -->
+    <!-- <script src="assets/js/task.js"></script> -->
+    <!-- <script src="assets/js/circleanimation.js"></script> -->
+    <!-- main js  -->
+    <script src="assets/js/script.js"></script>
+    <!-- <script src="assets/js/circleanimation.js"></script> -->
+</body>
+
+</html>
